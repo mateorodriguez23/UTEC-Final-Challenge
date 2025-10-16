@@ -358,7 +358,7 @@ EOF
           if (fileExists("${OUT_DIR}/results.jtl")) {
             // Read and analyze results
             def results = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | wc -l", returnStdout: true).trim().toInteger()
-            def errors = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | awk -F',' '$8==\"false\"' | wc -l", returnStdout: true).trim().toInteger()
+            def errors = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | awk -F',' '\$8==\"false\"' | wc -l", returnStdout: true).trim().toInteger()
             def successRate = ((results - errors) * 100.0d) / results
             def successRateRounded = new java.text.DecimalFormat('0.0').format(successRate)
             
