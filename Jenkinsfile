@@ -358,8 +358,9 @@ EOF
           if (fileExists("${OUT_DIR}/results.jtl")) {
             // Read and analyze results
             def results = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | wc -l", returnStdout: true).trim().toInteger()
-            def errors = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | awk -F',' '\$8==\"false\"' | wc -l", returnStdout: true).trim().toInteger()
-            def successRate = ((results - errors) * 100) / results
+            def errors = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | awk -F',' '$8==\"false\"' | wc -l", returnStdout: true).trim().toInteger()
+            def successRate = ((results - errors) * 100.0d) / results
+            def successRateRounded = new java.text.DecimalFormat('0.0').format(successRate)
             
             // Calculate average response time
             def avgResponse = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | awk -F',' '{sum+=\$2; count++} END {if(count>0) print int(sum/count); else print 0}'", returnStdout: true).trim().toInteger()
@@ -370,7 +371,7 @@ EOF
             echo "📊 Performance Test Results:"
             echo "   Total Requests: ${results}"
             echo "   Errors: ${errors}"
-            echo "   Success Rate: ${Math.round(successRate * 10) / 10}%"
+            echo "   Success Rate: ${successRateRounded}%"
             echo "   Average Response Time: ${avgResponse}ms"
             echo "   Max Response Time: ${maxResponse}ms"
 
@@ -409,7 +410,7 @@ EOF
             }
 
             // Enhanced build description with more metrics
-            currentBuild.description = "Success: ${Math.round(successRate * 10) / 10}% | Avg: ${avgResponse}ms | Max: ${maxResponse}ms | Requests: ${results}"
+            currentBuild.description = "Success: ${successRateRounded}% | Avg: ${avgResponse}ms | Max: ${maxResponse}ms | Requests: ${results}"
             
             echo "📈 Performance Plugin will provide detailed trends and comparisons"
             echo "📊 Check 'Performance Trend' graph in project dashboard"
