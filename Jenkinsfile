@@ -16,7 +16,6 @@ pipeline {
 
   options {
     timestamps()
-    ansiColor('xterm')
     // Keep builds for report history
     buildDiscarder(logRotator(numToKeepStr: '10'))
   }
