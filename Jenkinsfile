@@ -360,7 +360,7 @@ EOF
             def results = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | wc -l", returnStdout: true).trim().toInteger()
             def errors = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | awk -F',' '\$8==\"false\"' | wc -l", returnStdout: true).trim().toInteger()
             def successRate = ((results - errors) * 100.0d) / results
-            def successRateRounded = new java.text.DecimalFormat('0.0').format(successRate)
+            def successRateRounded = String.format('%.1f', successRate)
             
             // Calculate average response time
             def avgResponse = sh(script: "tail -n +2 ${OUT_DIR}/results.jtl | awk -F',' '{sum+=\$2; count++} END {if(count>0) print int(sum/count); else print 0}'", returnStdout: true).trim().toInteger()
