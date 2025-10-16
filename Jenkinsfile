@@ -318,30 +318,6 @@ EOF
           if (fileExists("${OUT_DIR}/results.jtl")) {
             archiveArtifacts artifacts: "${OUT_DIR}/**", fingerprint: true
             echo "✅ JMeter results and HTML reports archived"
-            
-            // Performance Plugin - Parse JTL files for trending and analysis
-            try {
-              perfReport(
-                sourceDataFiles: "${OUT_DIR}/results.jtl",
-                modeOfThreshold: true,
-                configType: 'ART',
-                modePerformancePerTestCase: true,
-                compareBuildPrevious: true,
-                modeThroughput: true,
-                nthBuildNumber: 0,
-                errorFailedThreshold: 5,
-                errorUnstableThreshold: 10,
-                relativeFailedThresholdPositive: 20,
-                relativeFailedThresholdNegative: 0,
-                relativeUnstableThresholdPositive: 50,
-                relativeUnstableThresholdNegative: 0,
-                modeEvaluation: true
-              )
-              echo "✅ Performance trends and analysis configured"
-            } catch (Exception e) {
-              echo "⚠️ Performance Plugin not available: ${e.message}"
-              echo "📝 Install Performance Plugin in Jenkins: Manage Jenkins → Manage Plugins → Search 'Performance'"
-            }
           }
 
           // Archive generated reports
