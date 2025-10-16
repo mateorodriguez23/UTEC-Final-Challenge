@@ -30,6 +30,9 @@ pipeline {
     JMETER_IMAGE = 'jmeter-prom:latest'
     JMETER_PROM_PORT = '9270'
     JMETER_CONTAINER_NAME = 'jmeter-run'
+    THREADS = '10'
+    RAMP_UP = '10'
+    DURATION = '60'
   }
 
   stages {
@@ -108,6 +111,11 @@ pipeline {
             -l /work/out/results.jtl \
             -e -o /work/out/jmeter-report \
             -f \
+            -Jhost=${AUT_HOST} \
+            -Jport=${AUT_PORT} \
+            -Jthreads=${THREADS} \
+            -JrampUp=${RAMP_UP} \
+            -Jduration=${DURATION} \
             -Jjmeter.save.saveservice.output_format=csv \
             -Jjmeter.save.saveservice.response_data=false \
             -Jjmeter.save.saveservice.samplerData=false \
