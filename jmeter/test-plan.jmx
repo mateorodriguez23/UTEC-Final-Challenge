@@ -232,6 +232,9 @@
         </hashTree>
       </hashTree>
       <com.github.johrstrom.listener.PrometheusListener guiclass="com.github.johrstrom.listener.gui.PrometheusListenerGui" testclass="com.github.johrstrom.listener.PrometheusListener" testname="Prometheus Listener" enabled="true">
+        <stringProp name="prometheus.host">0.0.0.0</stringProp>
+        <stringProp name="prometheus.port">9270</stringProp>
+        <stringProp name="prometheus.metricsPrefix">jmeter</stringProp>
         <collectionProp name="prometheus.collector_definitions">
           <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
             <stringProp name="collector.help">Sampler Response Time</stringProp>

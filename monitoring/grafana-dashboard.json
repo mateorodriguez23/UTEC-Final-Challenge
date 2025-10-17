@@ -180,7 +180,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "sum(rate(http_request_duration_ms_count{status_code!~\"2..\"}[1m])) / sum(rate(http_request_duration_ms_count[1m]))",
+          "expr": "clamp_max(sum(increase(http_request_duration_ms_count{status_code!~\"2..\"}[5m])) / clamp_min(sum(increase(http_request_duration_ms_count[5m])), 1), 1)",
           "refId": "A",
           "legendFormat": "Error Rate"
         }
@@ -462,7 +462,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "sum(rate(http_request_duration_ms_count{status_code=~\"2..\"}[1m])) / sum(rate(http_request_duration_ms_count[1m]))",
+          "expr": "clamp_max(sum(increase(http_request_duration_ms_count{status_code=~\"2..\"}[5m])) / clamp_min(sum(increase(http_request_duration_ms_count[5m])), 1), 1)",
           "refId": "A",
           "legendFormat": "Success Rate"
         }

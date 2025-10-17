@@ -40,6 +40,7 @@ services:
       - /usr/local/bin/docker:/usr/local/bin/docker
     environment:
       - JAVA_OPTS=-Djenkins.install.runSetupWizard=true
+      - JAVA_OPTS=-Dhudson.model.DirectoryBrowserSupport.CSP=sandbox\ allow-scripts\ allow-same-origin
 
   prometheus:
     image: prom/prometheus:v2.55.1
