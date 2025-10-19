@@ -115,9 +115,6 @@
           <stringProp name="classname">com.github.kolesnikovm.PrometheusListener</stringProp>
         </BackendListener>
         <hashTree/>
-      </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Auth Test Fragment"/>
-      <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /auth" enabled="true">
           <stringProp name="HTTPSampler.path">/auth</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -180,9 +177,6 @@
           </JSONPathAssertion>
           <hashTree/>
         </hashTree>
-      </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Products Test Fragment"/>
-      <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /products" enabled="true">
           <stringProp name="TestPlan.comments">Obtener los productos</stringProp>
           <stringProp name="HTTPSampler.path">/products</stringProp>
@@ -210,9 +204,6 @@
           </DurationAssertion>
           <hashTree/>
         </hashTree>
-      </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Cart Test Fragment"/>
-      <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /cart" enabled="true">
           <stringProp name="TestPlan.comments">Enviar mi carrito</stringProp>
           <stringProp name="HTTPSampler.path">/cart</stringProp>
@@ -282,9 +273,6 @@
           </DurationAssertion>
           <hashTree/>
         </hashTree>
-      </hashTree>
-      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Checkout Test Fragment"/>
-      <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /checkout" enabled="true">
           <stringProp name="TestPlan.comments">Realizar checkout</stringProp>
           <stringProp name="HTTPSampler.path">/checkout</stringProp>
